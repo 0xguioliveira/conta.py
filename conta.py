@@ -14,7 +14,7 @@ class Conta:
         self.__saldo += valor
 
 
-#---- criação de um novo método para facilitar na leitura do código com fucnionalidade de sacar.
+#criação de um novo método para sacar.
     def __pode_sacar(self, valor_a_sacar):
         valor_disponivel_a_sacar = self.__saldo + self.__limite
         return valor_a_sacar <= valor_disponivel_a_sacar
@@ -24,15 +24,12 @@ class Conta:
             self.__saldo -= valor
         else:
             print(f"O {valor} passou do limite e não pode ser sacado.")
-#--------------------------------------------------------------------------------------
-
 
     def transfere(self, valor, destino):
         self.saca(valor)
         destino.deposita(valor)
 
-    # método que dá acesso ao objeto. Property necessita que o atributo seja privado ("__" antes)
-    # property é a propriedade de get
+    # método que dá acesso ao objeto. Property necessita que o atributo seja privado.
     @property
     def saldo(self):
         return self.__saldo
@@ -46,12 +43,11 @@ class Conta:
         return self.__limite
 
     # setter tem a funcionalidade de modificar o valor, portanto, o valor que pode ser modificado se coloca no parâmetro.
-    # atenção ao montar o método.
     @limite.setter
     def limite(self, limite):
         self.__limite = limite
 
-    # método estático pois é um método diretamente ligado a CLASSE E NÃO AO OBJETO(self).
+    # método estático pois é um método diretamente ligado a classe e não ao objeto(self).
     @staticmethod
     def codigo_conta():
         return "001"
